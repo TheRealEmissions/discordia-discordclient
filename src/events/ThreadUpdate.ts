@@ -13,7 +13,3 @@ class ThreadUpdateEvent {
   }
 }
 export default ThreadUpdateEvent;
-
-// gonna go eat, ill push these changes, you carry on.
-// ill carry on when im back
-// ok

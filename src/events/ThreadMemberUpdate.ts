@@ -1,19 +1,20 @@
+import { Collection, Snowflake, ThreadMember, ThreadChannel } from "discord.js";
 import BaseApp from "../BaseApp.js";
 import ClientEvents from "../decorators/ClientEvents.js";
 
-class VoiceStateUpdateEvent {
-  @ClientEvents.bind(
-    BaseApp.Events.DiscordEvents.APPLICATION_COMMAND_PERMISSIONS_UPDATE
-  )
-  on(oldState: VoiceState, newState: VoiceState) {
+class ThreadMembersUpdateEvent {
+  @ClientEvents.bind(BaseApp.Events.DiscordEvents.THREAD_MEMBERS_UPDATE)
+  on(
+    added: Collection<Snowflake, ThreadMember>,
+    removed: Collection<Snowflake, ThreadMember>,
+    thread: ThreadChannel
+  ) {
     BaseApp.Events.getEventEmitter().emit(
-      BaseApp.Events.DiscordEvents.VOICE_STATE_UPDATE,
-      oldState,
-      newState
+      BaseApp.Events.DiscordEvents.THREAD_MEMBERS_UPDATE,
+      added,
+      removed,
+      thread
     );
   }
 }
-export default VoiceStateUpdateEvent;
-
-// gonna go eat, ill push these changes, you carry on.
-// ill carry on when im back
+export default ThreadMembersUpdateEvent;

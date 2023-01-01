@@ -2,14 +2,11 @@ import BaseApp from "../BaseApp.js";
 import ClientEvents from "../decorators/ClientEvents.js";
 
 class WarnEvent {
-  @ClientEvents.bind(
-    BaseApp.Events.DiscordEvents.
-  )
-  on(data: string) {
+  @ClientEvents.bind(BaseApp.Events.GeneralEvents.WARN)
+  on(info: string) {
     BaseApp.Events.getEventEmitter().emit(
-      BaseApp.Events.DiscordEvents.VOICE_STATE_UPDATE,
-      oldState,
-      newState
+      BaseApp.Events.GeneralEvents.WARN,
+      info
     );
   }
 }
