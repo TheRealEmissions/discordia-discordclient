@@ -1,0 +1,21 @@
+{
+  "name": "ts-modular-bot-addon-discord-client",
+  "version": "1.0.0",
+  "description": "Discord Client addon for Modular Bot Series",
+  "main": "out/index.js",
+  "types": "types/discord-client/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emissions#2565",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^1.4.0",
+    "discord.js": "^14.7.1",
+    "events-types": "github:therealemissions/ts-modular-bot-addons-types#events",
+    "ts-logger": "github:therealemissions/ts-logger",
+    "ts-modular-bot-file-design": "github:therealemissions/ts-modular-bot-file-design",
+    "ts-modular-bot-types": "github:therealemissions/ts-modular-bot-types"
+  },
+  "type": "module"
+}
