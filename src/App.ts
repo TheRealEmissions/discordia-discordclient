@@ -19,12 +19,10 @@ class App extends BaseApp {
       await this.login();
     } catch (error) {
       BaseApp.Events.getEventEmitter().emit(
-        BaseApp.Events.GeneralEvents.ERROR,
+        BaseApp.Events.GeneralEvents.USER_ERROR,
         error
       );
     }
-
-    console.log("testing, logged in");
   }
 
   async importEvents() {

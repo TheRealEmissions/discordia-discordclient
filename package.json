@@ -1,19 +1,23 @@
 {
-  "name": "ts-modular-bot-addon-discord_client-types",
+  "name": "ts-modular-bot-addon-discord-client",
   "version": "1.0.0",
-  "description": "Types for Discord Client addon for Modular Series",
-  "main": "discord-client/index.d.ts",
+  "description": "Discord Client addon for Modular Bot Series",
+  "main": "out/index.js",
+  "types": "types/discord-client/index.d.ts",
   "scripts": {
-    "test": " echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheRealEmissions/ts-modular-bot-addon-discord_client-types.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Emissions#2565",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TheRealEmissions/ts-modular-bot-addon-discord_client-types/issues"
+  "dependencies": {
+    "@discordjs/builders": "^1.4.0",
+    "discord-api-types": "^0.37.25",
+    "discord.js": "^14.7.1",
+    "events-types": "github:therealemissions/ts-modular-bot-addon-events-types",
+    "ts-logger": "github:therealemissions/ts-logger",
+    "ts-modular-bot-addon-events-types": "github:therealemissions/ts-modular-bot-addon-events-types",
+    "ts-modular-bot-file-design": "github:therealemissions/ts-modular-bot-file-design",
+    "ts-modular-bot-types": "github:therealemissions/ts-modular-bot-types"
   },
-  "homepage": "https://github.com/TheRealEmissions/ts-modular-bot-addon-discord_client-types#readme"
+  "type": "module"
 }

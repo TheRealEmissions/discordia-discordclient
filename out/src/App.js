@@ -12,9 +12,8 @@ class App extends BaseApp {
             await this.login();
         }
         catch (error) {
-            BaseApp.Events.getEventEmitter().emit(BaseApp.Events.GeneralEvents.ERROR, error);
+            BaseApp.Events.getEventEmitter().emit(BaseApp.Events.GeneralEvents.USER_ERROR, error);
         }
-        console.log("testing, logged in");
     }
     async importEvents() {
         const readyEvent = await import("./events/Ready.js");
