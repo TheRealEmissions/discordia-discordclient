@@ -1,5 +1,6 @@
 import { AuthConfig } from "../config/Auth.js";
 import BaseApp from "./BaseApp.js";
+import FS from "fs-extra-promise";
 
 class App extends BaseApp {
   events: any[] = [];
@@ -13,7 +14,7 @@ class App extends BaseApp {
       "Discord Client Loaded"
     );
 
-    this.importEvents();
+    await this.importEvents();
 
     try {
       await this.login();
@@ -26,9 +27,23 @@ class App extends BaseApp {
   }
 
   async importEvents() {
-    const readyEvent = await import("./events/Ready.js");
-    this.events.push(new readyEvent.default());
+    const files = await FS.readdirAsync("./src/events");
+    for (const file of files) {
+      if (!file.endsWith(".js")) continue;
+      const name = file.split(".")[0];
+      await this.pushEvent(name);
+    }
   }
+
+  async pushEvent(name: string) {
+    const event = await import(`./events/${name}.js`);
+    this.events.push(new event.default()); // nvm im blind
+    // yes you are
+    // and you're gay
+  }
+  // why are you using my jokes?
+  // because I want to
+  // gay LOL
 
   async login() {
     await this.getClient().login(AuthConfig.token);

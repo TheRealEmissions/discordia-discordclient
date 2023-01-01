@@ -1,10 +1,14 @@
-import { DiscordEvents, EventTypes } from "ts-modular-bot-addon-events-types";
+import {
+  DiscordEvents,
+  EventTypes,
+  GeneralEvents,
+} from "ts-modular-bot-addon-events-types";
 import BaseApp from "../BaseApp.js";
 import { ClientEvents as DiscordClientEvents } from "discord.js";
 
 class ClientEvents {
   static bind(
-    eventName: DiscordEvents,
+    eventName: DiscordEvents | GeneralEvents,
     type: EventTypes = BaseApp.Events.EventTypes.ON
   ) {
     return (
