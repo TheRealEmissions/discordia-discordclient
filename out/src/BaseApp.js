@@ -20,6 +20,10 @@ class BaseApp extends HeadFile {
     getClient() {
         return BaseApp.Client;
     }
+    static Rest = new Discord.REST({ version: "10" }).setToken(AuthConfig.token);
+    getRest() {
+        return BaseApp.Rest;
+    }
     getDependencies() {
         return [Dependency.EVENTS];
     }

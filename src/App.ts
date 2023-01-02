@@ -27,7 +27,9 @@ class App extends BaseApp {
   }
 
   async importEvents() {
-    const files = await FS.readdirAsync("./src/events");
+    const files = await FS.readdirAsync(
+      "./addons/Discord Client/out/src/events"
+    );
     for (const file of files) {
       if (!file.endsWith(".js")) continue;
       const name = file.split(".")[0];
@@ -37,13 +39,8 @@ class App extends BaseApp {
 
   async pushEvent(name: string) {
     const event = await import(`./events/${name}.js`);
-    this.events.push(new event.default()); // nvm im blind
-    // yes you are
-    // and you're gay
+    this.events.push(new event.default());
   }
-  // why are you using my jokes?
-  // because I want to
-  // gay LOL
 
   async login() {
     await this.getClient().login(AuthConfig.token);

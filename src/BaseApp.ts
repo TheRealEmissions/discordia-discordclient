@@ -21,6 +21,13 @@ abstract class BaseApp extends HeadFile {
     return BaseApp.Client;
   }
 
+  static readonly Rest = new Discord.REST({ version: "10" }).setToken(
+    AuthConfig.token
+  );
+  getRest() {
+    return BaseApp.Rest;
+  }
+
   abstract init(): void;
   getDependencies(): Dependency[] {
     return [Dependency.EVENTS];

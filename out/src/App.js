@@ -17,7 +17,7 @@ class App extends BaseApp {
         }
     }
     async importEvents() {
-        const files = await FS.readdirAsync("./src/events");
+        const files = await FS.readdirAsync("./addons/Discord Client/out/src/events");
         for (const file of files) {
             if (!file.endsWith(".js"))
                 continue;
