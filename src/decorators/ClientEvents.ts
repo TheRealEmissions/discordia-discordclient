@@ -16,15 +16,16 @@ class ClientEvents {
       propertyKey: string,
       descriptor: PropertyDescriptor
     ) => {
+      if (BaseApp.sharded) return;
       switch (type) {
         case BaseApp.Events.EventTypes.ON:
-          BaseApp.Client.on(
+          BaseApp.Client?.on(
             eventName as keyof DiscordClientEvents,
             descriptor.value
           );
           break;
         case BaseApp.Events.EventTypes.ONCE:
-          BaseApp.Client.once(
+          BaseApp.Client?.once(
             eventName as keyof DiscordClientEvents,
             descriptor.value
           );

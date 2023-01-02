@@ -8,4 +8,5 @@ export const AuthConfig: Auth = {
   options: {
     intents: [GatewayIntentBits.GuildBans],
   },
+  sharded: true,
 };

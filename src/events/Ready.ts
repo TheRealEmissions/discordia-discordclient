@@ -13,7 +13,7 @@ class ReadyEvent {
     BaseApp.Events.getEventEmitter().emit(
       BaseApp.Events.GeneralEvents.INFO,
       "Discord Bot is ready!",
-      `Username: ${BaseApp.Client.user?.tag}`
+      `Username: ${BaseApp.Client?.user?.tag}`
     );
   }
 }
