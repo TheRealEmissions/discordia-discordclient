@@ -10,7 +10,7 @@ class ReadyEvent {
     constructor() { }
     on() {
         console.log("on method called");
-        BaseApp.Events.getEventEmitter().emit(BaseApp.Events.GeneralEvents.INFO, "Discord Bot is ready!", `Username: ${BaseApp.Client.user?.tag}`);
+        BaseApp.Events.getEventEmitter().emit(BaseApp.Events.GeneralEvents.INFO, "Discord Bot is ready!", `Username: ${BaseApp.Client?.user?.tag}`);
     }
 }
 __decorate([

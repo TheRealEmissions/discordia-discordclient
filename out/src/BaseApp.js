@@ -15,9 +15,19 @@ class BaseApp extends HeadFile {
     type = Dependency.DISCORD_CLIENT;
     name = "Discord Client";
     load = true;
+    static sharded = process.argv.includes("--sharded")
+        ? false
+        : AuthConfig.sharded;
+    getSharded() {
+        return BaseApp.sharded;
+    }
     static Events;
-    static Client = new Discord.Client(AuthConfig.options);
+    static Client = AuthConfig.sharded
+        ? null
+        : new Discord.Client(AuthConfig.options);
     getClient() {
+        if (!BaseApp.Client)
+            throw new Error("Sharding enabled! You should access the Client on its shards!");
         return BaseApp.Client;
     }
     static Rest = new Discord.REST({ version: "10" }).setToken(AuthConfig.token);
@@ -26,6 +36,18 @@ class BaseApp extends HeadFile {
     }
     getDependencies() {
         return [Dependency.EVENTS];
+    }
+    static ShardManager = this.sharded
+        ? new Discord.ShardingManager("./addons/Discord Client/out/src/App.js", {
+            token: AuthConfig.token,
+            mode: "process",
+            shardArgs: ["--sharded"],
+        })
+        : null;
+    getShardManager() {
+        if (!BaseApp.ShardManager)
+            throw new Error("Sharding not enabled (or this is a shard!)");
+        return BaseApp.ShardManager;
     }
 }
 __decorate([
