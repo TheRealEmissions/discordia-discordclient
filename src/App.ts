@@ -1,5 +1,5 @@
 import { Dependency } from "ts-modular-bot-types";
-import { AuthConfig } from "../config/Auth.js";
+import { AuthConfig } from "../config/internal/Auth.js";
 import BaseApp from "./BaseApp.js";
 import FS from "fs-extra-promise";
 import { HeadFile } from "ts-modular-bot-file-design";

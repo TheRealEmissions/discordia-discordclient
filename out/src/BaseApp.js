@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { HeadFile } from "ts-modular-bot-file-design";
 import { Dependency, Dependencies } from "ts-modular-bot-types";
 import Discord from "discord.js";
-import { AuthConfig } from "../config/Auth.js";
+import { AuthConfig } from "../config/internal/Auth.js";
 class BaseApp extends HeadFile {
     constructor() {
         super();

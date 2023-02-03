@@ -1,0 +1,108 @@
+# -----
+# Your Discord Token should go here \/
+# -----
+token: "put your discord token here (NEVER SHARE IT!)"
+
+# ----
+# Options to configure the Discord Client
+#
+# It is recommended that you do not change these
+# options unless you know what you are doing
+#
+# If you need assistance, please open a Support Ticket
+# on the Discordia Discord
+#
+# You will need to enable priveleged intents at
+# https://discord.com/developers
+# for the bot to be able to access them
+#
+# ----
+options:
+  
+  # ----
+  # IT IS NOT RECOMMENDED TO USE INTERNAL SHARDING
+  # YOU SHOULD USE THE PROVIDED sharded OPTION
+  # USE AT YOUR OWN RISK
+  # ----
+
+  #shards: auto
+  #shardCount: 1
+
+
+  #closeTimeout: 1000
+  #allowedMentions:
+  #  parse:
+  #  - ""
+  #  roles:
+  #  - "123456"
+  #  users:
+  #  - "123456"
+  #  repliedUser: true
+  #partials:
+  #- USER
+  #- CHANNEL
+  #- GUILD_MEMBER
+  #- MESSAGE
+  #- REACTION
+  #- GUILD_SCHEDULED_EVENT
+  #- THREAD_MEMBER
+  #failIfNotExists: false
+  presence:
+    status: online
+    #afk: false
+    #activites: 
+    #  name: some activity
+    #  url: https://google.com/
+    #  type: PLAYING
+
+
+  # -----
+  # YOU CAN ENABLE/DISABLE INTENTS HERE
+  # 
+  # TO ENABLE AN INTENT, REMOVE THE # PREFIX
+  # TO DISABLE AN INTENT, ADD THE # PREFIX OR REMOVE IT
+  #
+  # CROSS-REFERENCE WITH INSTALLED ADD-ONS TO CHECK
+  # WHAT INTENTS ARE REQUIRED TO BE ENABLED
+  # -----
+  intents:
+  #- GUILDS
+  #- GUILD_MEMBERS
+  #- GUILD_BANS
+  #- GUILD_EMOJIS_AND_STICKERS
+  #- GUILD_INTEGRATIONS
+  #- GUILD_WEBHOOKS
+  #- GUILD_INVITES
+  #- GUILD_VOICE_STATES
+  #- GUILD_PRESENCES
+  #- GUILD_MESSAGES
+  #- GUILD_MESSAGE_REACTIONS
+  #- GUILD_MESSAGE_TYPING
+  #- DIRECT_MESSAGES
+  #- DIRECT_MESSAGE_REACTIONS
+  #- DIRECT_MESSAGE_TYPING
+  #- MESSAGE_CONTENT
+  #- GUILD_SCHEDULED_EVENTS
+  #- AUTO_MODERATION_CONFIGURATION
+  #- AUTO_MODERATION_EXECUTION
+
+
+  #waitGuildTimeout: 1000
+  #ws:
+  #  large_threshold: 1000
+  #  compress: true
+  #  properties:
+  #    os: "windows"
+  #    browser: "Chromium"
+  #    device: "unknown"
+  #  version: ""
+  #rest:
+
+# ----
+# Whether or not your bot should be sharded
+# It is recommended that this is enabled if your bot is in >=1000 guilds
+#
+# true = bot will be sharded
+# false = bot will not be sharded
+# ----
+sharded: true

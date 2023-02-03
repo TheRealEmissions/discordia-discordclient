@@ -5,7 +5,8 @@
   "main": "out/index.js",
   "types": "types/discord-client/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx tsc && copyfiles -u 1 config/*.yml out/config"
   },
   "author": "Emissions#2565",
   "license": "ISC",
@@ -14,10 +15,15 @@
     "discord-api-types": "^0.37.25",
     "discord.js": "^14.7.1",
     "events-types": "github:therealemissions/ts-modular-bot-addon-events-types",
+    "fs-extra-promise": "^1.0.1",
     "ts-logger": "github:therealemissions/ts-logger",
     "ts-modular-bot-addon-events-types": "github:therealemissions/ts-modular-bot-addon-events-types",
     "ts-modular-bot-file-design": "github:therealemissions/ts-modular-bot-file-design",
-    "ts-modular-bot-types": "github:therealemissions/ts-modular-bot-types"
+    "ts-modular-bot-types": "github:therealemissions/ts-modular-bot-types",
+    "yaml": "^2.2.1"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  }
 }
