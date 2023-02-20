@@ -22,74 +22,84 @@ class App extends BaseApp {
       );
 
     if (BaseApp.sharded) {
-      // await this.importEvents();
-
-      BaseApp.Events.getEventEmitter().emit(
-        BaseApp.Events.GeneralEvents.INFO,
-        "Sharding is enabled - launching shards..."
-      );
-      this.getShardManager().on("shardCreate", (shard) => {
-        BaseApp.Events.getEventEmitter().emit(
-          BaseApp.Events.GeneralEvents.INFO,
-          `Shard ${shard.id} launched`
-        );
-      });
-      await this.getShardManager().spawn();
+      this.initSharded();
     } else {
       if (process.argv.includes("--sharded")) {
-        // handle injection
-        await this.loadFolders("./addons");
-        await this.loadHeadFiles();
-
-        for (const head of preloadedHeadFiles.values()) {
-          const entries = head.vars;
-          if (!entries) continue;
-          for (const [target, key] of entries) {
-            const data = Reflect.getMetadata(key, target);
-            if (!data) continue;
-            const val = data[key].injectWith as Dependency | null;
-            if (val === null) continue;
-            const dependency = preloadedHeadFiles.get(val);
-            if (!dependency) continue;
-            Object.assign(target, { [key]: dependency });
-          }
-        }
-
-        // import events after its injected
-        await this.importEvents();
-
-        try {
-          await this.login();
-        } catch (error) {
-          BaseApp.Events.getEventEmitter().emit(
-            BaseApp.Events.GeneralEvents.USER_ERROR,
-            error
-          );
-          throw error;
-        }
-
-        for (const head of preloadedHeadFiles.values()) {
-          if (!head.load) continue;
-          const isLoadedAlready = await this.ensureDependency(head.type);
-          if (isLoadedAlready) continue;
-          const loaded = await this.initModule(head.type);
-          if (!loaded) {
-            console.error(`Failed to load ${head.name}`);
-            continue;
-          }
-        }
+        this.initOnShard();
       } else {
-        await this.importEvents();
+        this.initUnsharded();
+      }
+    }
+  }
 
-        try {
-          await this.login();
-        } catch (error) {
-          BaseApp.Events.getEventEmitter().emit(
-            BaseApp.Events.GeneralEvents.USER_ERROR,
-            error
-          );
-          throw error;
-        }
+  private async initUnsharded() {
+    await this.importEvents();
+
+    try {
+      await this.login();
+    } catch (error) {
+      BaseApp.Events.getEventEmitter().emit(
+        BaseApp.Events.GeneralEvents.USER_ERROR,
+        error
+      );
+      throw error;
+    }
+  }
+
+  private async initSharded() {
+    BaseApp.Events.getEventEmitter().emit(
+      BaseApp.Events.GeneralEvents.INFO,
+      "Sharding is enabled - launching shards..."
+    );
+    this.getShardManager().on("shardCreate", (shard) => {
+      BaseApp.Events.getEventEmitter().emit(
+        BaseApp.Events.GeneralEvents.INFO,
+        `Shard ${shard.id} launched`
+      );
+    });
+    await this.getShardManager().spawn();
+  }
+
+  private async initOnShard() {
+    // handle injection
+    await this.loadFolders("./addons");
+    await this.loadHeadFiles();
+
+    for (const head of preloadedHeadFiles.values()) {
+      const entries = head.vars;
+      if (!entries) continue;
+      for (const [target, key] of entries) {
+        const data = Reflect.getMetadata(key, target);
+        if (!data) continue;
+        const val = data[key].injectWith as Dependency | null;
+        if (val === null) continue;
+        const dependency = preloadedHeadFiles.get(val);
+        if (!dependency) continue;
+        Object.assign(target, { [key]: dependency });
+      }
+    }
+
+    // import events after its injected
+    await this.importEvents();
+
+    try {
+      await this.login();
+    } catch (error) {
+      BaseApp.Events.getEventEmitter().emit(
+        BaseApp.Events.GeneralEvents.USER_ERROR,
+        error
+      );
+      throw error;
+    }
+
+    for (const head of preloadedHeadFiles.values()) {
+      if (!head.load) continue;
+      const isLoadedAlready = await this.ensureDependency(head.type);
+      if (isLoadedAlready) continue;
+      const loaded = await this.initModule(head.type);
+      if (!loaded) {
+        console.error(`Failed to load ${head.name}`);
+        continue;
       }
     }
   }
@@ -163,7 +173,7 @@ class App extends BaseApp {
     }
   }
 
-  async pushEvent(name: string) {
+  private async pushEvent(name: string) {
     const event = await import(`./events/${name}.js`);
     this.events.push(new event.default());
   }
