@@ -17,7 +17,14 @@
     "esModuleInterop": false,
     "incremental": true,
     "experimentalDecorators": true,
-    "removeComments": true
+    "removeComments": true,
+    "paths": {
+      "@src/*": ["src/*"],
+      "@config/*": ["config/*"],
+      "@addons/*": ["../*"],
+      "@events/*": ["src/events/*"],
+      "@decorators/*": ["src/decorators/*"],
+    }
   },
   "include": ["./**/*"],
   "exclude": ["./node_modules/**/*", "./out/**/*", "*/node_modules/**/*", "*/package-lock.json"]

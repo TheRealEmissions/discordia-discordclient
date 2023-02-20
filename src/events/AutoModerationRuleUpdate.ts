@@ -1,6 +1,6 @@
 import { AutoModerationRule } from "discord.js";
-import BaseApp from "../BaseApp.js";
-import ClientEvents from "../decorators/ClientEvents.js";
+import BaseApp from "@src/BaseApp.js";
+import ClientEvents from "@decorators/ClientEvents.js";
 
 class AutoModerationRuleUpdateEvent {
   @ClientEvents.bind(BaseApp.Events.DiscordEvents.AUTO_MODERATION_RULE_UPDATE)

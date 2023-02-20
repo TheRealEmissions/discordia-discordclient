@@ -1,5 +1,5 @@
-import BaseApp from "../BaseApp.js";
-import ClientEvents from "../decorators/ClientEvents.js";
+import BaseApp from "@src/BaseApp.js";
+import ClientEvents from "@decorators/ClientEvents.js";
 import { User } from "discord.js";
 
 class UserUpdateEvent {

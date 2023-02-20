@@ -1,6 +1,6 @@
 import { Guild } from "discord.js";
-import BaseApp from "../BaseApp.js";
-import ClientEvents from "../decorators/ClientEvents.js";
+import BaseApp from "@src/BaseApp.js";
+import ClientEvents from "@decorators/ClientEvents.js";
 
 class GuildIntegrationsUpdateEvent {
   @ClientEvents.bind(BaseApp.Events.DiscordEvents.GUILD_INTEGRATIONS_UPDATE)

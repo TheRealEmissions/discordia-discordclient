@@ -1,6 +1,6 @@
 import { Collection, Guild, GuildMember, Snowflake } from "discord.js";
-import BaseApp from "../BaseApp.js";
-import ClientEvents from "../decorators/ClientEvents.js";
+import BaseApp from "@src/BaseApp.js";
+import ClientEvents from "@decorators/ClientEvents.js";
 
 type GuildMembersChunk = {
   index: number;

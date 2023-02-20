@@ -1,6 +1,6 @@
 import { DMChannel, GuildChannel, TextBasedChannel } from "discord.js";
-import BaseApp from "../BaseApp.js";
-import ClientEvents from "../decorators/ClientEvents.js";
+import BaseApp from "@src/BaseApp.js";
+import ClientEvents from "@decorators/ClientEvents.js";
 
 class ChannelPinsUpdateEvent {
   @ClientEvents.bind(BaseApp.Events.DiscordEvents.CHANNEL_PINS_UPDATE)

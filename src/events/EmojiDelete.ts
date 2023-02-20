@@ -1,6 +1,6 @@
 import { DMChannel, GuildChannel, GuildEmoji } from "discord.js";
-import BaseApp from "../BaseApp.js";
-import ClientEvents from "../decorators/ClientEvents.js";
+import BaseApp from "@src/BaseApp.js";
+import ClientEvents from "@decorators/ClientEvents.js";
 
 class EmojiDeleteEvent {
   @ClientEvents.bind(BaseApp.Events.DiscordEvents.EMOJI_DELETE)
