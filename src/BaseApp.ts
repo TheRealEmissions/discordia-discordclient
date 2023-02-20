@@ -1,7 +1,7 @@
 import Base from "ts-modular-bot-file-design";
 import { Dependency, Dependencies } from "ts-modular-bot-types";
 import Events from "ts-modular-bot-addon-events-types";
-import Discord, { Collection, Guild, Shard } from "discord.js";
+import Discord from "discord.js";
 import { AuthConfig } from "../config/internal/Auth.js";
 
 abstract class BaseApp extends Base {
@@ -22,10 +22,9 @@ abstract class BaseApp extends Base {
   @Dependencies.inject(Dependency.EVENTS)
   static Events: typeof Events;
 
-  static readonly Client =
-    AuthConfig.sharded && !process.argv.includes("--sharded")
-      ? null
-      : new Discord.Client(AuthConfig.options);
+  static readonly Client = this.sharded
+    ? null
+    : new Discord.Client(AuthConfig.options);
   getClient() {
     if (!BaseApp.Client)
       throw new Error(
