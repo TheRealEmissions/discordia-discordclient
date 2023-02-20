@@ -22,9 +22,10 @@ abstract class BaseApp extends Base {
   @Dependencies.inject(Dependency.EVENTS)
   static Events: typeof Events;
 
-  static readonly Client = AuthConfig.sharded
-    ? null
-    : new Discord.Client(AuthConfig.options);
+  static readonly Client =
+    AuthConfig.sharded && !process.argv.includes("--sharded")
+      ? null
+      : new Discord.Client(AuthConfig.options);
   getClient() {
     if (!BaseApp.Client)
       throw new Error(
