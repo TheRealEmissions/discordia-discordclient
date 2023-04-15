@@ -3,7 +3,7 @@ import {
   EventTypes,
   GeneralEvents,
 } from "ts-modular-bot-addon-events-types";
-import BaseApp from "@src/BaseApp.js";
+import BaseApp from "../BaseApp.js";
 import { ClientEvents as DiscordClientEvents } from "discord.js";
 
 class ClientEvents {

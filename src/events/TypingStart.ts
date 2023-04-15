@@ -1,5 +1,5 @@
-import BaseApp from "@src/BaseApp.js";
-import ClientEvents from "@decorators/ClientEvents.js";
+import BaseApp from "../BaseApp.js";
+import ClientEvents from "../decorators/ClientEvents.js";
 import { Typing } from "discord.js";
 
 class TypingStartEvent {

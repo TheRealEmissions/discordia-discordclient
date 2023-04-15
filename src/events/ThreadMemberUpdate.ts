@@ -1,6 +1,6 @@
 import { Collection, Snowflake, ThreadMember, ThreadChannel } from "discord.js";
-import BaseApp from "@src/BaseApp.js";
-import ClientEvents from "@decorators/ClientEvents.js";
+import BaseApp from "../BaseApp.js";
+import ClientEvents from "../decorators/ClientEvents.js";
 
 class ThreadMembersUpdateEvent {
   @ClientEvents.bind(BaseApp.Events.DiscordEvents.THREAD_MEMBERS_UPDATE)

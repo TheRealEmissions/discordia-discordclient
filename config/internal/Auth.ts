@@ -13,24 +13,27 @@ const config = YAML.parse(
 
 export const AuthConfig: Auth = {
   ...config,
-  intents:
-    config.intents?.map(
-      (x: string) =>
-        GatewayIntentBits[
-          x
-            .split("_")
-            .map((x) => x[0] + x.substring(1).toLowerCase())
-            .join("") as keyof typeof GatewayIntentBits
-        ]
-    ) ?? [],
-  partials:
-    config.partials?.map(
-      (x: string) =>
-        Partials[
-          x
-            .split("_")
-            .map((x) => x[0] + x.substring(1).toLowerCase())
-            .join("") as keyof typeof Partials
-        ]
-    ) ?? [],
+  options: {
+    ...config.options,
+    intents:
+      config.intents?.map(
+        (x: string) =>
+          GatewayIntentBits[
+            x
+              .split("_")
+              .map((x) => x[0] + x.substring(1).toLowerCase())
+              .join("") as keyof typeof GatewayIntentBits
+          ]
+      ) ?? [],
+    partials:
+      config.partials?.map(
+        (x: string) =>
+          Partials[
+            x
+              .split("_")
+              .map((x) => x[0] + x.substring(1).toLowerCase())
+              .join("") as keyof typeof Partials
+          ]
+      ) ?? [],
+  },
 };

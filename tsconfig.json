@@ -18,14 +18,7 @@
     "incremental": true,
     "experimentalDecorators": true,
     "removeComments": true,
-    "baseUrl": ".",
-    "paths": {
-      "@src/*": ["src/*"],
-      "@config/*": ["config/*"],
-      "@addons/*": ["../*"],
-      "@events/*": ["src/events/*"],
-      "@decorators/*": ["src/decorators/*"]
-    }
+    "baseUrl": "."
   },
   "include": ["./**/*"],
   "exclude": [

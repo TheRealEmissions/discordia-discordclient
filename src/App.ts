@@ -1,6 +1,6 @@
 import { Dependency } from "ts-modular-bot-types";
-import { AuthConfig } from "@config/internal/Auth.js";
-import BaseApp from "@src/BaseApp.js";
+import { AuthConfig } from "../config/internal/Auth.js";
+import BaseApp from "./BaseApp.js";
 import FS from "fs-extra-promise";
 import Base from "ts-modular-bot-file-design";
 
@@ -15,6 +15,13 @@ class App extends BaseApp {
   }
 
   async init(): Promise<void> {
+    process.on("unhandledRejection", (err) => {
+      BaseApp.Events.getEventEmitter().emit(
+        BaseApp.Events.GeneralEvents.ERROR,
+        err
+      );
+    });
+
     if (!process.argv.includes("--sharded"))
       BaseApp.Events.getEventEmitter().emit(
         BaseApp.Events.GeneralEvents.INFO,
@@ -57,7 +64,14 @@ class App extends BaseApp {
         `Shard ${shard.id} launched`
       );
     });
-    await this.getShardManager().spawn();
+    await this.getShardManager()
+      .spawn()
+      .catch((e) => {
+        BaseApp.Events.getEventEmitter().emit(
+          BaseApp.Events.GeneralEvents.ERROR,
+          e
+        );
+      });
   }
 
   private async initOnShard() {
@@ -146,7 +160,7 @@ class App extends BaseApp {
   private async loadHeadFiles() {
     for (const folder of preloadedFolders) {
       try {
-        const headFile = (await import(`@addons/${folder}/out/index.js`))
+        const headFile = (await import(`../../../${folder}/out/index.js`))
           .default;
         if (!headFile.load) continue;
         if (headFile.type === Dependency.DISCORD_CLIENT) {
@@ -174,7 +188,7 @@ class App extends BaseApp {
   }
 
   private async pushEvent(name: string) {
-    const event = await import(`@events/${name}.js`);
+    const event = await import(`./events/${name}.js`);
     this.events.push(new event.default());
   }
 
