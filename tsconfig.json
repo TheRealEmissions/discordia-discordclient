@@ -18,14 +18,21 @@
     "incremental": true,
     "experimentalDecorators": true,
     "removeComments": true,
+    "baseUrl": ".",
     "paths": {
       "@src/*": ["src/*"],
       "@config/*": ["config/*"],
       "@addons/*": ["../*"],
       "@events/*": ["src/events/*"],
-      "@decorators/*": ["src/decorators/*"],
+      "@decorators/*": ["src/decorators/*"]
     }
   },
   "include": ["./**/*"],
-  "exclude": ["./node_modules/**/*", "./out/**/*", "*/node_modules/**/*", "*/package-lock.json"]
+  "exclude": [
+    "./node_modules/**/*",
+    "./out/**/*",
+    "*/node_modules/**/*",
+    "*/package-lock.json",
+    "./types/discord-client/**/*"
+  ]
 }
