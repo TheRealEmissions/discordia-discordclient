@@ -9,6 +9,10 @@ class InteractionCreateEvent {
       BaseApp.Events.DiscordEvents.INTERACTION_CREATE,
       interaction
     );
+    BaseApp.Events.getEventEmitter().emit(
+      BaseApp.Events.GeneralEvents.DEBUG,
+      `InteractionCreateEvent: ${interaction}`
+    );
   }
 }
 
