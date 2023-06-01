@@ -1,5 +1,5 @@
 import Base from "ts-modular-bot-file-design";
-import { Dependency, Dependencies } from "ts-modular-bot-types";
+import { Dependency, Dependencies } from "ada-types";
 import Events from "ts-modular-bot-addon-events-types";
 import Discord from "discord.js";
 import { AuthConfig } from "../config/internal/Auth.js";
