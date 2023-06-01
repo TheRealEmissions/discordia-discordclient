@@ -1,8 +1,4 @@
-import {
-  DiscordEvents,
-  EventTypes,
-  GeneralEvents,
-} from "ts-modular-bot-addon-events-types";
+import { DiscordEvents, EventTypes, GeneralEvents } from "ada-events-types";
 import BaseApp from "../BaseApp.js";
 import { ClientEvents as DiscordClientEvents } from "discord.js";
 
