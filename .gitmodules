@@ -1,0 +1,4 @@
+[submodule "Discord Client Types"]
+	path = types
+	url = https://github.com/therealemissions/discordia-discordclient-types.git
+	branch = ada
