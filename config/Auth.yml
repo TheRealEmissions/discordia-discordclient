@@ -9,16 +9,12 @@ token: "token goes here"
 # It is recommended that you do not change these
 # options unless you know what you are doing
 #
-# If you need assistance, please open a Support Ticket
-# on the Discordia Discord
-#
 # You will need to enable priveleged intents at
 # https://discord.com/developers
 # for the bot to be able to access them
 #
 # ----
 options:
-  
   # ----
   # IT IS NOT RECOMMENDED TO USE INTERNAL SHARDING
   # YOU SHOULD USE THE PROVIDED sharded OPTION
@@ -27,7 +23,6 @@ options:
 
   #shards: auto
   #shardCount: 1
-
 
   #closeTimeout: 1000
   #allowedMentions:
@@ -50,15 +45,14 @@ options:
   presence:
     status: online
     #afk: false
-    #activites: 
+    #activites:
     #  name: some activity
     #  url: https://google.com/
     #  type: PLAYING
 
-
   # -----
   # YOU CAN ENABLE/DISABLE INTENTS HERE
-  # 
+  #
   # TO ENABLE AN INTENT, REMOVE THE # PREFIX
   # TO DISABLE AN INTENT, ADD THE # PREFIX OR REMOVE IT
   #
@@ -66,7 +60,7 @@ options:
   # WHAT INTENTS ARE REQUIRED TO BE ENABLED
   # -----
   intents:
-  - GUILDS
+    - GUILDS
   #- GUILD_MEMBERS
   #- GUILD_BANS
   #- GUILD_EMOJIS_AND_STICKERS
@@ -86,7 +80,6 @@ options:
   #- AUTO_MODERATION_CONFIGURATION
   #- AUTO_MODERATION_EXECUTION
 
-
   #waitGuildTimeout: 1000
   #ws:
   #  large_threshold: 1000
@@ -105,4 +98,4 @@ options:
 # true = bot will be sharded
 # false = bot will not be sharded
 # ----
-sharded: true
+sharded: false
