@@ -2,7 +2,7 @@ import { Dependency } from "ada-types";
 import { AuthConfig } from "../config/internal/Auth.js";
 import BaseApp from "./BaseApp.js";
 import FS from "fs-extra-promise";
-import Base from "ts-modular-bot-file-design";
+import Base from "ada-file-design";
 
 const preloadedFolders: string[] = [];
 const preloadedHeadFiles = new Map<number, Base>();
