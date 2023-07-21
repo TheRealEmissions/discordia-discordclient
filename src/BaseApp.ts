@@ -1,4 +1,4 @@
-import Base from "ts-modular-bot-file-design";
+import Base from "ada-file-design";
 import { Dependency, Dependencies } from "ada-types";
 import Events from "ada-events-types";
 import Discord from "discord.js";
@@ -21,6 +21,9 @@ abstract class BaseApp extends Base {
 
   @Dependencies.inject(Dependency.EVENTS)
   static Events: typeof Events;
+  getEvents() {
+    return BaseApp.Events;
+  }
 
   static readonly Client = this.sharded
     ? null
